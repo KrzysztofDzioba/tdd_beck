@@ -13,9 +13,9 @@ class TestClass {
 
     @Test
     public void testFrancMultiplication() {
-        Franc five= new Franc(5, null);
-        assertEquals(new Franc(10, null), five.times(2));
-        assertEquals(new Franc(15, null), five.times(3));
+        Franc five= new Franc(5, "CHF");
+        assertEquals(new Franc(10, "CHF"), five.times(2));
+        assertEquals(new Franc(15, "CHF"), five.times(3));
     }
 
     @Test
@@ -31,6 +31,11 @@ class TestClass {
     public void testCurrency() {
         assertEquals("USD", Money.dollar(1).currency());
         assertEquals("CHF", Money.franc(1).currency());
+    }
+
+    @Test
+    public void testDifferentClassEquality() {
+        assertTrue(new Money(10, "CHF").equals(new Franc(10, "CHF")));
     }
 
 }
